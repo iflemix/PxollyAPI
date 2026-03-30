@@ -1,0 +1,7 @@
+[project]
+name = "pxollyapi"
+version = "0.1.0"
+description = "Библиотека для взаимодействия с API чат менеджера Pxolly"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
