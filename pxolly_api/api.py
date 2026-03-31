@@ -2,7 +2,6 @@ from types import TracebackType
 from typing import Type
 
 import niquests
-from niquests import AsyncSession
 
 from .exceptions import ApiError, RequestError, ResponseError
 
@@ -14,7 +13,7 @@ class PxollyAPI:
 
     API_URL = "https://api.pxolly.ru/method"
 
-    def __init__(self, token: str, version: str = "2.5", session: AsyncSession | None = None) -> None:
+    def __init__(self, token: str, version: str = "2.5", session: niquests.AsyncSession | None = None) -> None:
         """
         :param token: Токен доступа
         :param version: Версия API
@@ -23,7 +22,7 @@ class PxollyAPI:
 
         self._token = token
         self._version = version
-        self._session = session or AsyncSession(base_url=self.API_URL)
+        self._session = session or niquests.AsyncSession(base_url=self.API_URL)
         self._base_params = {"v": self._version, "access_token": self._token}
 
     async def __aenter__(self) -> "PxollyAPI":
