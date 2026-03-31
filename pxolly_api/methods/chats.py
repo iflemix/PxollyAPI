@@ -42,7 +42,7 @@ class ChatsCategory(BaseCategory):
         response = await self.api.method("chats.editTitle", params)
         return ChatEditTitle(response=response["response"])
 
-    async def get_by_id(self, chat_ids: str, fields: str) -> ChatsGetByID:
+    async def get_by_id(self, chat_ids: str, fields: str = None) -> ChatsGetByID:
         """
         Получить информацию о чатах и участниках
         Документация: https://vk.com/app7273656#/dev/method/chats.getById
