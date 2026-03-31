@@ -4,7 +4,7 @@ from typing import Type
 import niquests
 
 from .exceptions import ApiError, RequestError, ResponseError
-from .methods import AccountCategory, CallbackCategory, ChatsCategory
+from .methods import AccountCategory, CallbackCategory, ChatsCategory, DatabaseCategory
 
 
 class PxollyAPI:
@@ -27,6 +27,7 @@ class PxollyAPI:
         self.account = AccountCategory(self)
         self.callback = CallbackCategory(self)
         self.chats = ChatsCategory(self)
+        self.database = DatabaseCategory(self)
 
     async def __aenter__(self) -> "PxollyAPI":
         return self
