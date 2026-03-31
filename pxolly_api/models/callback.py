@@ -11,7 +11,7 @@ class CallbackGetSettings(BaseModel):
 
 
 class CallbackGetConfirmationCode(BaseModel):
-    """Код потверждения Callback API"""
+    """Код подтверждения Callback API"""
 
     code: str
 
