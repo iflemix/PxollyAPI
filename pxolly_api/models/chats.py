@@ -4,14 +4,20 @@ from ..enums import ChatMemberStatus, FormattingEntityType
 
 
 class ChatBanMember(BaseModel):
+    """Бан участника в чате"""
+
     response: int
 
 
 class ChatEditTitle(BaseModel):
+    """Изменение названия чата"""
+
     response: int
 
 
 class ChatGetByID(BaseModel):
+    """Чат"""
+
     id: str
     title: str
     photo: str | None
@@ -27,6 +33,8 @@ class ChatGetByID(BaseModel):
 
 
 class ChatMember(BaseModel):
+    """Участник чата"""
+
     id: int
     role: int
     immune: int | None
@@ -38,6 +46,8 @@ class ChatMember(BaseModel):
 
 
 class ChatGetMembers(BaseModel):
+    """Участники чата"""
+
     response: list[ChatMember]
 
     @classmethod
@@ -47,11 +57,15 @@ class ChatGetMembers(BaseModel):
 
 
 class ChatRole(BaseModel):
+    """Роль чата"""
+
     name: str
     role_id: str
 
 
 class ChatGetRoles(BaseModel):
+    """Роли чата"""
+
     response: list[ChatRole]
 
     @classmethod
@@ -61,6 +75,8 @@ class ChatGetRoles(BaseModel):
 
 
 class ChatFormattingEntity(BaseModel):
+    """Формат текста"""
+
     type: FormattingEntityType
     offset: int
     length: int
@@ -68,6 +84,8 @@ class ChatFormattingEntity(BaseModel):
 
 
 class ChatGetRules(BaseModel):
+    """Правила чата"""
+
     text: str
     entities: list[ChatFormattingEntity]
     owner_id: int
@@ -79,12 +97,18 @@ class ChatGetRules(BaseModel):
 
 
 class ChatSendMessage(BaseModel):
+    """Отправка сообщения в чат"""
+
     response: int
 
 
 class ChatSetMemberRole(BaseModel):
+    """Установка роли участника чата"""
+
     response: int
 
 
 class ChatSetSilenceMode(BaseModel):
+    """Установка режима тишины чата"""
+
     response: int
