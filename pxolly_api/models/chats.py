@@ -82,6 +82,29 @@ class ChatMemberAccount(BaseModel):
     screen_name: str
 
 
+class ChatGetMembersById(BaseModel):
+    """Участники чата"""
+
+    response: list[ChatMember]
+
+    @classmethod
+    def from_response(cls, response: list) -> "ChatGetMembersById":
+        members = [
+            ChatMember(
+                id=member["id"],
+                role=member["role"],
+                immune=member.get("immune"),
+                status=member["status"],
+                warns=member.get("warns"),
+                messages=member["messages"],
+                ban_expire=member.get("ban_expire"),
+                mute_expire=member.get("mute_expire"),
+            )
+            for member in response
+        ]
+        return cls(response=members)
+
+
 class ChatGetMembers(BaseModel):
     """Участники чата"""
 

@@ -3,6 +3,7 @@ from ..models.chats import (
     ChatBanMember,
     ChatEditTitle,
     ChatGetMembers,
+    ChatGetMembersById,
     ChatGetRoles,
     ChatGetRules,
     ChatSendMessage,
@@ -68,7 +69,7 @@ class ChatsCategory(BaseCategory):
         response = await self.api.method("chats.getMembers", params)
         return ChatGetMembers.from_response(response=response["response"])
 
-    async def get_members_by_id(self, chat_id: str, user_ids: str) -> ChatGetMembers:
+    async def get_members_by_id(self, chat_id: str, user_ids: str) -> ChatGetMembersById:
         """
         Получить участников чата по их ID
         Документация: https://vk.com/app7273656#/dev/method/chats.getMembersById
@@ -78,7 +79,7 @@ class ChatsCategory(BaseCategory):
         """
         params = {"chat_id": chat_id, "user_ids": user_ids}
         response = await self.api.method("chats.getMembersById", params)
-        return ChatGetMembers.from_response(response=response["response"])
+        return ChatGetMembersById.from_response(response=response["response"])
 
     async def get_roles(self, chat_id: str) -> ChatGetRoles:
         """
