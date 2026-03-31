@@ -1,0 +1,28 @@
+[project]
+name = "pxollyapi"
+version = "0.1.0"
+description = "Библиотека для взаимодействия с API чат менеджера Pxolly"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "niquests>=3.18.3",
+    "pydantic>=2.12.5",
+]
+
+[tool.ruff]
+line-length=120
+
+select = ["E", "F"]
+ignore = ["E501"]
+fixable = ["A", "B", "C", "D", "E", "F"]
+exclude = [".venv", "__pycache__", ".git"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[dependency-groups]
+dev = [
+    "dotenv>=0.9.9",
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+]
