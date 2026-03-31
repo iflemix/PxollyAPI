@@ -1,3 +1,6 @@
+from types import TracebackType
+from typing import Type
+
 import niquests
 from niquests import AsyncSession
 
@@ -26,7 +29,7 @@ class PxollyAPI:
     async def __aenter__(self) -> "PxollyAPI":
         return self
 
-    async def __aexit__(self, type, value, traceback) -> None:
+    async def __aexit__(self, type: Type[BaseException], value: BaseException, traceback: TracebackType) -> None:
         await self.close()
 
     async def method(self, method: str, params: dict | None = None) -> dict:
