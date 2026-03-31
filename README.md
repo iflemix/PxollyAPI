@@ -45,6 +45,15 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+Также вместо готовых методов можно использовать сырые вызовы
+```python
+# Вместо
+result = await api.account.get_info()
+
+# Используем 
+result = await api.method("account.getById")
+```
+
 ## Доступные категории методов
 * Account
 * Callback
