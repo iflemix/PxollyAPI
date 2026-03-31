@@ -29,7 +29,7 @@ class Chat(BaseModel):
     role: int | None
     immune: int | None
     warns: int | None
-    max_warns: int
+    max_warns: int | None
 
 
 class ChatsGetByID(BaseModel):
@@ -39,7 +39,23 @@ class ChatsGetByID(BaseModel):
 
     @classmethod
     def from_response(cls, response: dict) -> "ChatsGetByID":
-        chats = [Chat(**chat) for chat in response]
+        chats = [
+            Chat(
+                id=chat["id"],
+                title=chat["title"],
+                photo=chat.get("photo"),
+                members_count=chat.get("members_count"),
+                is_gold=chat["is_gold"],
+                owner_id=chat["owner_id"],
+                admin_ids=chat.get("admin_ids"),
+                bot_ids=chat.get("bot_ids"),
+                role=chat.get("role"),
+                immune=chat.get("immune"),
+                warns=chat.get("warns"),
+                max_warns=chat.get("max_warns"),
+            )
+            for chat in response
+        ]
         return cls(response=chats)
 
 
@@ -56,15 +72,40 @@ class ChatMember(BaseModel):
     mute_expire: int | None
 
 
+class ChatMemberAccount(BaseModel):
+    """Аккаунт участника чата"""
+
+    id: int
+    name: str
+    sex: int
+    photo_200: str
+    screen_name: str
+
+
 class ChatGetMembers(BaseModel):
     """Участники чата"""
 
-    response: list[ChatMember]
+    count: int
+    items: list[ChatMember]
+    accounts: list[ChatMemberAccount]
 
     @classmethod
     def from_response(cls, response: dict) -> "ChatGetMembers":
-        members = [ChatMember(**member) for member in response]
-        return cls(response=members)
+        members = [
+            ChatMember(
+                id=member["id"],
+                role=member["role"],
+                immune=member.get("immune"),
+                status=member["status"],
+                warns=member.get("warns"),
+                messages=member["messages"],
+                ban_expire=member.get("ban_expire"),
+                mute_expire=member.get("mute_expire"),
+            )
+            for member in response["items"]
+        ]
+        accounts = [ChatMemberAccount(**account) for account in response["accounts"]]
+        return cls(count=response["count"], items=members, accounts=accounts)
 
 
 class ChatRole(BaseModel):
