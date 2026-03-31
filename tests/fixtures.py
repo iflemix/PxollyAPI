@@ -11,6 +11,6 @@ dotenv.load_dotenv()
 
 @pytest_asyncio.fixture
 async def pxolly_api() -> typing.AsyncGenerator[PxollyAPI]:
-    token = os.getenv("PXOLLY_TOKEN")
+    token = os.getenv("PXOLLY_API_TOKEN")
     async with PxollyAPI(token=token) as api:
         yield api
