@@ -1,11 +1,11 @@
-from ..models.users import GetUserRegisterdDate, GetUserStickerPacks
+from ..models.users import GetUserRegisteredDate, GetUserStickerPacks
 from ._base import BaseCategory
 
 
 class UsersCategory(BaseCategory):
     """Методы для работы с пользователями"""
 
-    async def get_registered_date(self, user_ids: str) -> GetUserRegisterdDate:
+    async def get_registered_date(self, user_ids: str) -> GetUserRegisteredDate:
         """
         Получить дату регистрации пользователей
         Документация: https://vk.com/app7273656#/dev/method/users.getRegisteredDate
@@ -14,7 +14,7 @@ class UsersCategory(BaseCategory):
         """
         params = {"user_ids": user_ids}
         response = await self.api.method("users.getRegisteredDate", params)
-        return GetUserRegisterdDate(**response["response"])
+        return GetUserRegisteredDate.from_response(response["response"])
 
     async def get_sticker_packs(self, user_id: int, max_count: int, need_titles: bool = False) -> GetUserStickerPacks:
         """

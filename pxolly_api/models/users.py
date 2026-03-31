@@ -1,11 +1,22 @@
 from pydantic import BaseModel
 
 
-class GetUserRegisterdDate(BaseModel):
+class UserRegisteredDate(BaseModel):
     """Дата регистрации пользователя"""
 
     id: int
     registered: int
+
+
+class GetUserRegisteredDate(BaseModel):
+    """Дата регистрации пользователей"""
+
+    response: list[UserRegisteredDate]
+
+    @classmethod
+    def from_response(cls, response: list) -> "GetUserRegisteredDate":
+        dates = [UserRegisteredDate(**date) for date in response]
+        return cls(response=dates)
 
 
 class UserStickerPacksCategory(BaseModel):
@@ -36,9 +47,24 @@ class GetUserStickerPacks(BaseModel):
     @classmethod
     def from_response(cls, response: dict) -> "GetUserStickerPacks":
         amount = UserStickerPacksAmount(**response["amount"])
-        free = UserStickerPacksCategory(**response["free"])
-        paid = UserStickerPacksCategory(**response["paid"])
-        collectible = UserStickerPacksCategory(**response["collectible"])
+
+        free = UserStickerPacksCategory(
+            count=response["free"]["count"],
+            animated_count=response["free"].get("animated_count"),
+            pack_titles=response["free"].get("pack_titles"),
+        )
+
+        paid = UserStickerPacksCategory(
+            count=response["paid"]["count"],
+            animated_count=response["paid"].get("animated_count"),
+            pack_titles=response["paid"].get("pack_titles"),
+        )
+
+        collectible = UserStickerPacksCategory(
+            count=response["collectible"]["count"],
+            animated_count=response["collectible"].get("animated_count"),
+            pack_titles=response["collectible"].get("pack_titles"),
+        )
 
         return cls(
             name=response["name"],

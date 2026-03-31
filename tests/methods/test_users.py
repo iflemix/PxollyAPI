@@ -1,13 +1,13 @@
 import pytest
 
 from pxolly_api import PxollyAPI
-from pxolly_api.models.users import GetUserRegisterdDate, GetUserStickerPacks
+from pxolly_api.models.users import GetUserRegisteredDate, GetUserStickerPacks
 
 
 @pytest.mark.asyncio
 async def test_users_get_registered_date(pxolly_api: PxollyAPI) -> None:
     result = await pxolly_api.users.get_registered_date("733772362")
-    assert isinstance(result, GetUserRegisterdDate)
+    assert isinstance(result, GetUserRegisteredDate)
 
 
 @pytest.mark.asyncio
