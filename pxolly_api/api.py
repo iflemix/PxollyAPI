@@ -8,9 +8,7 @@ from .methods import AccountCategory, CallbackCategory
 
 
 class PxollyAPI:
-    """
-    Клиент для взаимодействия с API чат менеджера Pxolly
-    """
+    """Клиент для взаимодействия с API чат менеджера Pxolly"""
 
     API_URL = "https://api.pxolly.ru/method"
 
