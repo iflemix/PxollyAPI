@@ -4,6 +4,7 @@ from typing import Type
 import niquests
 
 from .exceptions import ApiError, RequestError, ResponseError
+from .methods import AccountCategory
 
 
 class PxollyAPI:
@@ -24,6 +25,8 @@ class PxollyAPI:
         self._version = version
         self._session = session or niquests.AsyncSession(base_url=self.API_URL)
         self._base_params = {"v": self._version, "access_token": self._token}
+
+        self.account = AccountCategory(self)
 
     async def __aenter__(self) -> "PxollyAPI":
         return self
