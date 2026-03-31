@@ -2,13 +2,13 @@ from ..enums import ChatMemberFilter
 from ..models.chats import (
     ChatBanMember,
     ChatEditTitle,
-    ChatGetByID,
     ChatGetMembers,
     ChatGetRoles,
     ChatGetRules,
     ChatSendMessage,
     ChatSetMemberRole,
     ChatSetSilenceMode,
+    ChatsGetByID,
 )
 from ._base import BaseCategory
 
@@ -42,17 +42,17 @@ class ChatsCategory(BaseCategory):
         response = await self.api.method("chats.editTitle", params)
         return ChatEditTitle(response=response["response"])
 
-    async def get_by_id(self, chat_id: str, fields: str) -> ChatGetByID:
+    async def get_by_id(self, chat_ids: str, fields: str) -> ChatsGetByID:
         """
-        Получить информацию о чате и участниках
+        Получить информацию о чатах и участниках
         Документация: https://vk.com/app7273656#/dev/method/chats.getById
 
-        :param chat_id: ID чата
+        :param chat_ids: ID чатов
         :param fields: Дополнительные поля с информацией
         """
-        params = {"chat_id": chat_id, "fields": fields}
+        params = {"chat_ids": chat_ids, "fields": fields}
         response = await self.api.method("chats.getById", params)
-        return ChatGetByID(**response["response"])
+        return ChatsGetByID.from_response(response["response"])
 
     async def get_members(self, chat_id: str, count: int, offset: int, filter: ChatMemberFilter) -> ChatGetMembers:
         """

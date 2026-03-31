@@ -15,7 +15,7 @@ class ChatEditTitle(BaseModel):
     response: int
 
 
-class ChatGetByID(BaseModel):
+class Chat(BaseModel):
     """Чат"""
 
     id: str
@@ -30,6 +30,17 @@ class ChatGetByID(BaseModel):
     immune: int | None
     warns: int | None
     max_warns: int
+
+
+class ChatsGetByID(BaseModel):
+    """Чаты"""
+
+    response: list[Chat]
+
+    @classmethod
+    def from_response(cls, response: dict) -> "ChatsGetByID":
+        chats = [Chat(**chat) for chat in response]
+        return cls(response=chats)
 
 
 class ChatMember(BaseModel):
