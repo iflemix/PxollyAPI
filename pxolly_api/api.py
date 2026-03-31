@@ -16,7 +16,7 @@ class PxollyAPI:
     def __init__(self, token: str, version: str = "2.5", session: niquests.AsyncSession | None = None) -> None:
         """
         :param token: Токен доступа
-        :param version: Версия API
+        :param version: Версия
         :param session: Сессия niquests.AsyncSession
         """
 
@@ -65,7 +65,7 @@ class PxollyAPI:
         Выполнить несколько запросов к API
         Документация: https://vk.com/app7273656#/dev/method/execute
 
-        :param code: код запросов
+        :param code: Код запросов
         :return: dict
         """
 
