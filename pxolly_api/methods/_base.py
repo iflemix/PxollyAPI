@@ -7,5 +7,7 @@ if typing.TYPE_CHECKING:
 class BaseCategory:
     """Базовая категория методов API"""
 
+    __slots__ = ("api",)
+
     def __init__(self, api: "PxollyAPI") -> None:
         self.api = api
