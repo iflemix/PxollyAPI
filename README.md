@@ -51,7 +51,7 @@ if __name__ == "__main__":
 result = await api.account.get_info()
 
 # Используем 
-result = await api.method("account.getById")
+result = await api.method("account.getInfo")
 ```
 
 ## Доступные категории методов
