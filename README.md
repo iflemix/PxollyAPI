@@ -64,6 +64,7 @@ result = await api.method("account.getInfo")
 
 ## Зависимости и инструменты
 * Пакетный менеджер: uv
+* Линтер: ruff
 * HTTP клиент: niquests
 * Валидация: pydantic
 * Тестирование: pytest, pytest-asyncio
