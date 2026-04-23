@@ -73,5 +73,5 @@ result = await api.method("account.getInfo")
 [Полина Шатохина](https://vk.com/lilchacha)   
 Помогла с ошибками и недочётами в методах, а также дала полную документацию ко всем методам.
 
-[Пхолли](https://vk.com/pxolly)
+[Пхолли](https://vk.com/pxolly)  
 Эпл в мире вк ботов ❤
