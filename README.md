@@ -16,7 +16,7 @@ async def main() -> None:
         result = await api.account.get_info()
         print(result)
     except PxollyException as exc:
-        print("Ошибка", e)
+        print("Ошибка", exc)
     finally:
         await api.close()
 
@@ -39,7 +39,7 @@ async def main() -> None:
             result = await api.account.get_info()
             print(result)
         except PxollyException as exc:
-            print("Ошибка", e)
+            print("Ошибка", exc)
 
 if __name__ == "__main__":
     asyncio.run(main())
