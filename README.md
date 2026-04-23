@@ -78,3 +78,6 @@ result = await api.method("account.getInfo")
 
 [Пхолли](https://vk.com/pxolly)  
 Эпл в мире ботов ❤
+
+## Лицензия
+MIT
