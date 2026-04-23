@@ -1,3 +1,5 @@
+from typing import overload
+
 from ..models.utils import UtilsCheckText, UtilsGetServerTime, UtilsGetServerTimeExtended
 from ._base import BaseCategory
 
@@ -18,6 +20,12 @@ class UtilsCategory(BaseCategory):
         response = await self.api.method("utils.checkText", params)
         return UtilsCheckText(response=response["response"])
 
+    @overload
+    async def get_server_time(self, extended: bool = False) -> UtilsGetServerTime: ...
+
+    @overload
+    async def get_server_time(self, extended: bool = True) -> UtilsGetServerTimeExtended: ...
+
     async def get_server_time(self, extended: bool = False) -> UtilsGetServerTime | UtilsGetServerTimeExtended:
         """
         Получить время сервера Pxolly
@@ -30,4 +38,5 @@ class UtilsCategory(BaseCategory):
 
         if extended:
             return UtilsGetServerTimeExtended(**response["response"])
-        return UtilsGetServerTime(response=response["response"])
+        else:
+            return UtilsGetServerTime(response=response["response"])
