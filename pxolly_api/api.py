@@ -39,7 +39,7 @@ class PxollyAPI:
 
     async def method(self, method: str, params: dict | None = None) -> dict:
         """
-        Выполнить запрос к API
+        Вызвать метод API
 
         :param method: Название метода
         :param params: Параметры запроса
