@@ -68,7 +68,7 @@ class PxollyAPI:
 
     async def execute(self, code: str) -> dict:
         """
-        Выполнить несколько запросов к API
+        Выполнить несколько методов API
         Документация: https://vk.com/app7273656#/dev/method/execute
 
         :param code: Код запросов
