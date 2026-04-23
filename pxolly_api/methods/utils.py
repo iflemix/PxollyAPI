@@ -11,7 +11,7 @@ class UtilsCategory(BaseCategory):
         """
         Проверить совпадение текста указанному словарю
         Экспериментальный метод, доступ к которому может быть не у всех
-        Документация: https://vk.com/app7273656?ref=group_menu#/dev/method/utils.checkText
+        Документация: https://vk.com/app7273656#/dev/method/utils.checkText
 
         :param text: Текст
         :param dictionary: Название словаря
