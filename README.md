@@ -81,4 +81,4 @@ result = await api.method("account.getInfo")
 
 ## Лицензия и авторство
 Проект распространяется под лицензией [MIT](LICENSE)  
-Copyright 2026 [iflemix](https://github.com/iflemix)
+Copyright (C) 2026 [iflemix](https://github.com/iflemix)
