@@ -80,5 +80,5 @@ result = await api.method("account.getInfo")
 Эпл в мире ботов ❤
 
 ## Лицензия
-© [iflemix](https://github.com/iflemix), 2026  
-Проект распространяется под лицензией [MIT](LICENSE)
+Проект распространяется под лицензией [MIT](LICENSE)  
+Copyright 2026 [iflemix](https://github.com/iflemix)
