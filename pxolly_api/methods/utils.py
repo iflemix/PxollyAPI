@@ -1,4 +1,4 @@
-from typing import overload
+from typing import Literal, overload
 
 from ..models.utils import UtilsCheckText, UtilsGetServerTime, UtilsGetServerTimeExtended
 from ._base import BaseCategory
@@ -21,10 +21,10 @@ class UtilsCategory(BaseCategory):
         return UtilsCheckText(response=response["response"])
 
     @overload
-    async def get_server_time(self, extended: bool = False) -> UtilsGetServerTime: ...
+    async def get_server_time(self, extended: Literal[False]) -> UtilsGetServerTime: ...
 
     @overload
-    async def get_server_time(self, extended: bool = True) -> UtilsGetServerTimeExtended: ...
+    async def get_server_time(self, extended: Literal[True]) -> UtilsGetServerTimeExtended: ...
 
     async def get_server_time(self, extended: bool = False) -> UtilsGetServerTime | UtilsGetServerTimeExtended:
         """
