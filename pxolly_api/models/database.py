@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 from ..enums import DatabaseID
+from ..types import DatabaseIDOrStr
 
 
 class DatabaseGetIrisMember(BaseModel):
@@ -27,7 +28,7 @@ class DatabaseGet(BaseModel):
     response: DatabaseGetIris
 
     @classmethod
-    def from_response(cls, response: dict, database_id: DatabaseID) -> "DatabaseGet":
+    def from_response(cls, response: dict, database_id: DatabaseIDOrStr) -> "DatabaseGet":
         if database_id == DatabaseID.IRIS:
             members = [DatabaseGetIrisMember(**member) for member in response["items"]]
             response_model = DatabaseGetIris(count=response["count"], items=members)

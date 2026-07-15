@@ -1,5 +1,5 @@
-from ..enums import DatabaseID
 from ..models.database import DatabaseGet
+from ..types import DatabaseIDOrStr
 from ._base import BaseCategory
 
 
@@ -8,7 +8,7 @@ class DatabaseCategory(BaseCategory):
 
     async def get(
         self,
-        database_id: DatabaseID,
+        database_id: DatabaseIDOrStr,
         user_ids: str,
         allow_fakes: bool,
         key: str | None = None,
