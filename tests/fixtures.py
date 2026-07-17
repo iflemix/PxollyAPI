@@ -1,5 +1,5 @@
 import os
-import typing
+from collections.abc import AsyncGenerator
 
 import dotenv
 import pytest_asyncio
@@ -10,7 +10,7 @@ dotenv.load_dotenv()
 
 
 @pytest_asyncio.fixture()
-async def pxolly_api() -> typing.AsyncGenerator[PxollyAPI]:
+async def pxolly_api() -> AsyncGenerator[PxollyAPI, None]:
     token = os.getenv("PXOLLY_API_TOKEN")
     if not token:
         raise ValueError("Not PXOLLY_API_TOKEN in .env file")
